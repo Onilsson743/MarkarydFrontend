@@ -1,10 +1,12 @@
+import AddIdeaComponent from '@/components/AddIdeaComponent'
 import React from 'react'
+import "./ideas.scss"
 
 const ideas = () => {
   return (
-    <>
-      <h1>ideer</h1>    
-    </>
+    <div className='ideas-page'>
+      <AddIdeaComponent />   
+    </div>
   )
 }
 
