@@ -1,12 +1,11 @@
 trigger:
-  branches:
-    include:
-      - main
-  batch: 'true'
+  - main
 
 pool:
   default
 
+variables:
+  azureSubscription: 'Markaryd-Connection'
 
 steps:
 - task: NodeTool@1
