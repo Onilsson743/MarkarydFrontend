@@ -26,5 +26,5 @@ steps:
   inputs:
     azureSubscription: $(azureSubscription)
     appType: 'webApp'
-    appName: markaryd-frontned-development
+    appName: markaryd-frontend-development
     package: '$(System.DefaultWorkingDirectory)/**/*.zip'
