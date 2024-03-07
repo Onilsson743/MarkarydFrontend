@@ -21,21 +21,10 @@ steps:
     npm run build
   displayName: 'Building project'
 
-- task: ArchiveFiles@2
-  displayName: 'Archive files'
-  inputs:
-    rootFolderOrFile: '$(System.DefaultWorkingDirectory)/.next/'
-    includeRootFolder: false
-    archiveType: zip
-    archiveFile: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
-    replaceExistingArchive: true
-
-- publish: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
-  artifact: frontend
 - task: AzureWebApp@1
   displayName: 'Azure Web App Deploy'
   inputs:
     azureSubscription: $(azureSubscription)
     appType: 'webApp'
     appName: markaryd-frontend-development
-    package: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    package: '$(System.DefaultWorkingDirectory)/.next/'
