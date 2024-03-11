@@ -5,6 +5,7 @@ import "./ideas.scss"
 const ideas = () => {
   return (
     <div className='ideas-page'>
+      
       <AddIdeaComponent />   
     </div>
   )
