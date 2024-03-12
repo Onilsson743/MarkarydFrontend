@@ -1,3 +1,5 @@
+@import '../core/mixins.scss';
+
 .green-small-button {
     color: white;
     background-color: #12332E;
@@ -42,6 +44,10 @@
         animation-name: animatetop;
         animation-duration: 0.5s;
         height: 500px;
+
+        @include md {
+            width: 500px;
+        }
 
         .heading {
             text-align: center;

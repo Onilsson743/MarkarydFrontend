@@ -1,13 +1,26 @@
 'use client'
+import { AddNewIdea } from "@/scripts/IdeasFetch";
 import "../styles/components/AddIdeaComponent.scss"
 
 import React, { useState } from 'react'
 
-const AddIdeaComponent = () => {
+interface props {
+  refetch : () => {}
+}
+
+const AddIdeaComponent : React.FC<props> = ({refetch}) => {
   const [toggle, setToggle] = useState<boolean>();
+  const [value, setValue] = useState<string>();
 
-  const handleSubmit = () => {
-
+  const handleSubmit = async () => {
+    if (value != undefined) {
+      var result : Response = await AddNewIdea(value);
+      if (result.ok) {
+        refetch()
+        setToggle(false)
+      }
+    }
+    
   }
   return (
     <>
@@ -15,11 +28,11 @@ const AddIdeaComponent = () => {
         
       <div className={"modal" + (toggle ? " d-block " : "")}>
         <div className="modal-content">
-          <h2 className="heading">Lägg till idé så fixar vi det! &#128513;</h2>
+          <h2 className="heading">Skriv ner tankar/idéer över hur sidan ska se ut/fungera.</h2>
           <span className="close" onClick={() => setToggle(false)}>&times;</span>
           <form action="">
-            <textarea placeholder="Skriv din idé här..."></textarea>
-            <button type="button" className="green-small-button">Spara</button>
+            <textarea placeholder="Skriv här..." value={value} onChange={(e) => setValue(e.target.value)}></textarea>
+            <button type="button" className="green-small-button" onClick={() => handleSubmit()}>Spara</button>
           </form>
         </div>
       </div>

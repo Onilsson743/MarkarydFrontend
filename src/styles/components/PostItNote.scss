@@ -1,0 +1,23 @@
+
+.postit {
+    position: relative;
+    float: left;
+    background-color: rgb(245, 234, 140);
+    width: 250px;
+    height: 200px;
+    box-shadow: 0 5px 5px  #777;
+    padding: 5px;
+
+    .delete-icon {
+        position: absolute;
+        bottom: 5px;
+        right: 5px;
+        font-size: 22px;
+        color: rgb(255, 3, 3);
+        transition: 0.2s ease-in-out;
+
+        &:hover {
+            scale: 1.2;
+        }
+    }
+}
