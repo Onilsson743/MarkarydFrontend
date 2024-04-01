@@ -1,0 +1,26 @@
+.image-slider {
+    position: relative;
+    display: flex;
+    overflow: hidden;
+    height: 800px;
+
+    img {
+        position: absolute;
+        min-width: 100vw;
+        height: 100%;
+        object-fit: cover;
+        transition: 1.5s ease-in-out;
+    }
+    .active {
+        transform: translateX(0%);
+        z-index: 1;
+    }
+    .prev {
+        transform: translateX(-100%);
+    }
+    .hide {
+        transform: translateX(100%);
+        display: hidden;
+        z-index: -1;
+    }
+}
