@@ -1,0 +1,42 @@
+@import "../core/mixins.scss";
+
+.header {
+    position: relative;
+    height: 400px;
+    margin-top: -84px;
+
+    @include lg {
+        height: 700px;
+    }
+    .header-image {
+        height: 100%;
+        width: 100vw;
+        object-fit: cover;
+        filter: brightness(0.4);
+        @include lg {
+            position: absolute;
+            z-index: -1;
+            top: 0;
+            left: 0;
+            height: 100%;
+        }
+    }
+
+    .calendar-div { 
+        padding-top: 20px;  
+        @include lg {
+            padding-top: 200px;
+        }   
+        
+
+        .MuiDateCalendar-root {
+            box-shadow: 0px 5px 10px rgb(44, 44, 44);
+            background-color: white !important;
+            border-radius: 10px;
+            @include lg {
+                float: right;
+            }
+
+        }
+    }
+}

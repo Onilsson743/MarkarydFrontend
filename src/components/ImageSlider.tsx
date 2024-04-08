@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import '../styles/components/ImageSlider.scss';
+import Calendar  from '../components/Calendar';
 
 interface props {
     images: string[]
@@ -17,18 +18,26 @@ const ImageSlider: React.FC<props> = ({ images }) => {
             );
         }, 7000);  
         return () => clearInterval(interval);
-    }, [currentImageIndex]);    
-
+    }, []);   
+    
+    var today = new Date();
+    var tomorrow = new Date(new Date);
+    tomorrow.setDate(today.getDate() + 1);
     return (
         <div className='image-slider'>
-            {
+            {/* {
                 images.map((image, index) =>
-                    <img className={(index === currentImageIndex) ? " active " :
+                    <img key={index} className={(index === currentImageIndex) ? " active " :
                         (index === currentImageIndex - 1 || (index === images.length - 1 && currentImageIndex === 0)) ? " prev " : " hide "
                         }
                         src={image} alt={`Slide ${index}`} />
                 )
-            }
+            } */}
+
+            <div className='header'>
+
+            </div>
+            <Calendar />
         </div>
     )
 }

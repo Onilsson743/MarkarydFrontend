@@ -1,21 +1,26 @@
 @import "../core/mixins.scss";
+@font-face {
+    font-family: 'YourFontName'; /*a name to be used later*/
+    src: url('../../../public/fonts/logo-font.ttf'); /*URL to font*/
+}
+.container {   
+    background: transparent;
+    padding-top: 20px;
 
-.navigationbar {   
-    background: #12332E;
-    padding: 10px 0;
-    position: relative;
-    top: 0;
-    // overflow: hidden;
-
-    .container {
+    .navigationbar {
+        position: relative;
         display: flex;
         justify-content: space-between;
 
         .logo {
-            font-size: 30px;
+            font-size: 40px;
+            // font-family: YourFontName;
             text-decoration: none;
             color: white;   
-            z-index: 5;     
+            z-index: 5;  
+            background-color: transparent;  
+            border-radius: 50px;
+            padding: 2px 20px; 
         }
 
         .menu {
@@ -26,6 +31,11 @@
                 position: relative;
                 z-index: 5;
                 transition: all 0.7s ease;
+                background-color: transparent;
+                // border: none;
+                border: 3px solid white;
+                padding: 0 10px;
+                border-radius: 50%;
                                 
                 
                 @include md {
@@ -39,9 +49,10 @@
                 div {
                     width: 30px;
                     height: 3px;
-                    background: #ffffff;
+                    background: white;
                     margin: 5px;
                     transition: all 0.3s ease;
+                    
                 }
             }
             .toggle {
@@ -61,21 +72,21 @@
                 position: absolute;
                 opacity: 0;
                 z-index: 1;
-                padding: 20px 0;
+                padding: 0;
+                padding-top: 20px;
                 top: -30px;
                 left: 0;
-                width: 100vw;
-                background-color: #12332E;
+                width: 100%;                 
                 transition: 0.4s ease-in-out;
                 display: flex;
-                justify-content: space-around;
+                justify-content: space-between;
                 @include md {
                     position: static;
                     opacity: 1;
                     padding: 0;
                     justify-content: end;
                     width: auto;
-                    gap: 20px;
+                    gap: 10px;
                     align-items: center;
                     text-align: center;
                     margin: 0;
@@ -88,11 +99,21 @@
                     .link {
                         position: relative;
                         text-decoration: none;
-                        color: white;
-                        font-size: 24px;
+                        color: black;
+                        font-size: 20px;
                         transition: 0.2s ease-in-out;
+                        background-color: #faf0dcc5;  
+                        border-radius: 50px;
+                        padding: 0px 5px;
+                        box-shadow: 0px 5px 5px #6b6b6b;
+                        @include lg {
+                            font-size: 24px;
+                            padding: 0px 10px;
+                        }
                         
-                        
+                        &:hover {
+                            scale: 1.2;
+                        }
                         &::after {
                             content: '';
                             position: absolute;
@@ -105,10 +126,10 @@
                             
                         }
                         
-                        &:hover:after {
-                            width: 100%;
-                            left: 0;
-                        }
+                        // &:hover:after {
+                        //     width: 100%;
+                        //     left: 0;
+                        // }
                     }
                 }
             }

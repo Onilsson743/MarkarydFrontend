@@ -9,9 +9,9 @@ const Navbar = () => {
 
   return (
     <>
-      <header className="navigationbar">
-        <nav className="container">
-          <Link href="/" className='logo'>Markaryd</Link>
+      <header className="container">
+        <nav className="navigationbar">
+          <Link href="/" className='logo'>Barkaryd</Link>
           <div className='menu'> 
             <button onClick={() => setToggle(!toggle)} className={"hamburger " + (toggle ? " toggle " : "")} type="button">
               <div className="line1"></div>
@@ -30,6 +30,9 @@ const Navbar = () => {
               </li>
               <li>
                 <Link href="/contact" onClick={() => setToggle(!toggle)} className='link'>Kontakt</Link>
+              </li>
+              <li>
+                <Link href="/guest-book" onClick={() => setToggle(!toggle)} className='link'>Gästbok</Link>
               </li>
             </ul>
           </div>
