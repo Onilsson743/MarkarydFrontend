@@ -22,13 +22,13 @@ function areDatesEqual(date1 : Date, date2 : Date) {
 interface CustomPickerDayProps extends PickersDayProps<Dayjs> {
     isSelected: boolean;
     isHovered: boolean;
-    isBetween?: boolean;
-    
+    isbetween?: boolean;
+    isbefore: boolean
 }
 
 const CustomPickersDay = styled(PickersDay, {
     shouldForwardProp: (prop) => prop !== 'isSelected' && prop !== 'isHovered',
-})<CustomPickerDayProps>(({ theme, isSelected, isHovered, isBetween}) => ({
+})<CustomPickerDayProps>(({ theme, isSelected, isHovered, isbetween, isbefore}) => ({
     borderRadius: 0,
     ...(isSelected && {
         backgroundColor: "rgba(0, 13, 255, 0.8)",
@@ -43,9 +43,12 @@ const CustomPickersDay = styled(PickersDay, {
             backgroundColor: "rgba(0, 13, 255, 1)",
         },
     }),
-    ...(isBetween && {
+    ...(isbetween && {
         backgroundColor: "rgba(0, 13, 255, 0.3)",
     }),
+    ...(isbefore && {
+        color: "rgba(196, 196, 196, 1)"
+    })
 
 })) as React.ComponentType<CustomPickerDayProps>;
 
@@ -67,6 +70,10 @@ function Day(
     if (hoveredDay) {
         hover = areDatesEqual(day.toDate(), hoveredDay!.toDate())
     }
+    let prevday = false;
+    if (day.toDate() < new Date) {
+        prevday = true
+    }
     return (
         <CustomPickersDay
             {...other}
@@ -76,7 +83,8 @@ function Day(
             selected={false}
             isSelected={selected}
             isHovered={hover}
-            isBetween={datesBetween}
+            isbetween={datesBetween}
+            isbefore={prevday}
         />
     );
 }

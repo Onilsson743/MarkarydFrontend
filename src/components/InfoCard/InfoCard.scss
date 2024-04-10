@@ -1,0 +1,23 @@
+.utilities-card {
+    padding-top: 20px;
+    display: flex;
+    gap: 30px;
+
+    .image {
+        width: 400px;
+        height: 300px;
+        border-radius: 25px;
+        overflow: hidden;
+
+        img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+        
+    }
+}
+.reverse {
+    flex-direction: row-reverse;
+    justify-content: space-between;
+}

@@ -1,11 +1,17 @@
 @import "../core/mixins.scss";
-@font-face {
-    font-family: 'YourFontName'; /*a name to be used later*/
-    src: url('../../../public/fonts/logo-font.ttf'); /*URL to font*/
+
+.navbar-background {
+    position: absolute;
+    top: 0;
+    width: 100vw;
+    height: 100px;
+    background-color: rgba(5, 3, 14, 0.925);
+    z-index: -5;
 }
 .container {   
     background: transparent;
     padding-top: 20px;
+    margin-bottom: 20px;
 
     .navigationbar {
         position: relative;
@@ -14,9 +20,8 @@
 
         .logo {
             font-size: 40px;
-            // font-family: YourFontName;
             text-decoration: none;
-            color: white;   
+            color: #faf0dc;   
             z-index: 5;  
             background-color: transparent;  
             border-radius: 50px;
@@ -32,7 +37,6 @@
                 z-index: 5;
                 transition: all 0.7s ease;
                 background-color: transparent;
-                // border: none;
                 border: 3px solid white;
                 padding: 0 10px;
                 border-radius: 50%;

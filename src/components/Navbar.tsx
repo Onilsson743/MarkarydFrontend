@@ -9,6 +9,7 @@ const Navbar = () => {
 
   return (
     <>
+      <div className='navbar-background'></div>
       <header className="container">
         <nav className="navigationbar">
           <Link href="/" className='logo'>Barkaryd</Link>
@@ -19,6 +20,9 @@ const Navbar = () => {
               <div className="line3"></div>
             </button>
             <ul className={'links ' + (toggle ? " show " : "")}>
+              <li>
+                <Link href="/" onClick={() => setToggle(!toggle)} className='link' locale="fr">Hem</Link>
+              </li>
               <li>
                 <Link href="/ideas" onClick={() => setToggle(!toggle)} className='link'>Idéer</Link>
               </li>

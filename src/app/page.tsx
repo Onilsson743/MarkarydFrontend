@@ -1,5 +1,6 @@
+import DisplayInfoCards from "@/components/DisplayInfoCards";
 import Header from "@/components/Header";
-import ImageSlider from "@/components/ImageSlider";
+
 
 export default function Home() {
   const images : string[] = [
@@ -9,9 +10,14 @@ export default function Home() {
     "https://a0.muscache.com/im/pictures/miso/Hosting-686760093059295825/original/73e77552-7255-4031-af67-17f632928124.jpeg?im_w=1920",
     "https://a0.muscache.com/im/pictures/miso/Hosting-686760093059295825/original/846419e6-86d9-4bca-a4a8-f0456aaab531.jpeg?im_w=1920"
   ]
+
+
+
+ 
   return (
     <>
       <Header />
+      <DisplayInfoCards />      
     </>
   );
 }
