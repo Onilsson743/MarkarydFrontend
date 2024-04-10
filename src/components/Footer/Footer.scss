@@ -1,0 +1,28 @@
+@import "../../styles/core/colours.scss";
+
+footer {
+    height: 200px;
+    background-color: $darkgrey;
+    color: $beige;
+    width: 100%;
+    margin-top: 50px;
+    .container {
+        display: flex;
+        justify-content: space-between;
+        height: 100%;
+        padding-top: 0;
+        padding-bottom: 0;
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .google-maps {
+            height: 100%;
+            width: 50%;
+        }
+    }
+
+    
+}

@@ -1,5 +1,6 @@
 import DisplayInfoCards from "@/components/DisplayInfoCards";
 import Header from "@/components/Header";
+import ImageUtilities from "@/components/ImageUtilities/ImageUtilities";
 
 
 export default function Home() {
@@ -17,7 +18,8 @@ export default function Home() {
   return (
     <>
       <Header />
-      <DisplayInfoCards />      
+      {/* <DisplayInfoCards /> */}
+      <ImageUtilities />
     </>
   );
 }

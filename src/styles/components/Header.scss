@@ -10,7 +10,7 @@
     }
     .header-image {
         height: 400px;
-        width: 100vw;
+        width: 100%;
         object-fit: cover;
         filter: brightness(0.4);
         @include lg {
