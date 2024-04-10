@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import '../styles/components/Header.scss';
 
 import BasicDateCalendar from '../components/Calendar';
+import DateRangePicker from './DateRangePicker/DateRangePicker';
 
 const Header = () => {
     const utilities : string[] = [
@@ -33,7 +34,8 @@ const Header = () => {
                         }
                     </ul>
                 </div>
-                <BasicDateCalendar />
+                <DateRangePicker />
+                {/* <BasicDateCalendar /> */}
             </div>
 
         </div>

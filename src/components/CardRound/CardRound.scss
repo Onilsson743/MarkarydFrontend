@@ -2,16 +2,26 @@
 @import "../../styles/core/colours.scss";
 
 .card-round {
-    width: 200px;
-    height: 200px;
+    width: 150px;
+    height: 150px;
     z-index: 5;
     border-radius: 50%;
     overflow: hidden;
     position: relative;
+    transition: 0.2s ease-in-out;
+
+    &:hover {
+        scale: 1.1;
+    }
+    &:hover img {
+        filter: brightness(1);
+    }
     img {
         height: 100%;
         width: 100%;
         object-fit: cover;
+        filter: brightness(0.7);
+        transition: 0.2s ease-in-out;
     }
     .text {
         position: absolute;
@@ -20,8 +30,10 @@
         display: flex;
         justify-content: center;
         background-color: #ffffffb9;
+        padding: 3px 0;
         h3 {
-            font-size: 20px;
+            font-size: 18px;
+            margin: 0;
         }
     }
     
