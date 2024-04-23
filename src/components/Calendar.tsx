@@ -23,31 +23,40 @@ interface CustomPickerDayProps extends PickersDayProps<Dayjs> {
     isSelected: boolean;
     isHovered: boolean;
     isbetween?: boolean;
-    isbefore: boolean
+    isbefore: boolean;
+    isFirst?: boolean;
+    isLast?: boolean;
 }
 
 const CustomPickersDay = styled(PickersDay, {
     shouldForwardProp: (prop) => prop !== 'isSelected' && prop !== 'isHovered',
-})<CustomPickerDayProps>(({ theme, isSelected, isHovered, isbetween, isbefore}) => ({
-    borderRadius: 0,
+})<CustomPickerDayProps>(({ theme, isSelected, isHovered, isbetween, isbefore, isFirst, isLast}) => ({
+    borderRadius: "50%",
+    fontSize: "14px",
+    border: "1px solid transparent",
     ...(isSelected && {
-        backgroundColor: "rgba(0, 13, 255, 0.8)",
+        backgroundColor: "rgba(25,118,210, 1) !important",
         color: theme.palette.primary.contrastText,
         '&:hover, &:focus': {
-            backgroundColor: "rgba(0, 13, 255, 1)",
+            backgroundColor: "rgba(25,118,210, 1) !important",
         },
     }),
     ...(isHovered && {
-        backgroundColor: "rgba(0, 13, 255, 1)",
+        border: "1px solid rgba(0, 0, 0, 0.6)",
         '&:hover, &:focus': {
-            backgroundColor: "rgba(0, 13, 255, 1)",
+            border: "1px solid rgba(0, 0, 0, 0.6) !important",
+
         },
     }),
     ...(isbetween && {
-        backgroundColor: "rgba(0, 13, 255, 0.3)",
+        borderRadius: 0,
+        backgroundColor: "rgba(25, 118, 210, 0.12)",
     }),
     ...(isbefore && {
         color: "rgba(196, 196, 196, 1)"
+    }),
+    ...(isFirst && {
+        
     })
 
 })) as React.ComponentType<CustomPickerDayProps>;
@@ -78,7 +87,7 @@ function Day(
         <CustomPickersDay
             {...other}
             day={day}
-            sx={{ px: 2.5 }}
+            sx={{ px: 2.2 }}
             disableMargin
             selected={false}
             isSelected={selected}
