@@ -1,18 +1,23 @@
-@import "../core/mixins.scss";
+@import "../../styles/core/mixins.scss";
+@import "../../styles/core/colours.scss";
+
 
 .header {
     position: relative;
     height: auto;
-    margin-top: -103px;
+    margin-top: -280px;
 
     @include lg {
         height: 700px;
+    }
+    @include xxl {
+        margin-top: -380px;
     }
     .header-image {
         height: 400px;
         width: 100%;
         object-fit: cover;
-        filter: brightness(0.4);
+        filter: brightness(0.8);
         @include lg {
             position: absolute;
             z-index: -1;
@@ -28,6 +33,7 @@
         flex-direction: column;
         justify-content: space-between;
         align-items: center;
+        gap: 20px;
         @include md {
             flex-direction: row;
         }   
@@ -37,9 +43,21 @@
         }   
 
         .utilities {
-            background-color: #f2f2f2e0;
+            background-color: white;
+            color: black;
+            box-shadow: 0px 5px 10px rgb(44, 44, 44);
             border-radius: 10px;
             padding: 20px;
+            
+
+            @include lg {
+                background-color: #000000c4;
+                box-shadow: 2px 2px 20px black;
+                color: white;
+            }
+            h2 {
+                text-align: center;
+            }
         }
         
 

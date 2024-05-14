@@ -1,0 +1,42 @@
+@import "../../styles/core/mixins.scss";
+@import "../../styles/core/colours.scss";
+
+.booking-form {
+    // background-color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: space-around;
+    // padding-top: 30px;
+    padding-bottom: 20px;
+    min-height: 500px;
+
+    .MuiDateCalendar-root {
+        border: 1px solid rgba(0, 0, 0, 0.096);
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.377);
+        border-radius: 15px;
+        margin-bottom: 30px;
+        background-color: white;
+    }
+    form {
+        display: flex;
+        flex-direction: column;
+
+        input, textarea {
+            border: 1px solid rgba(0, 0, 0, 0.295);
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.377);
+            border-radius: 15px;
+            padding: 10px 10px;
+            margin-bottom: 20px;
+
+        }
+        label {
+            font-size: 20px;
+            margin-left: 5px;
+        }
+        textarea{
+            min-height: 114px;
+        }
+    }
+
+}

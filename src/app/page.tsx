@@ -1,5 +1,6 @@
 import DisplayInfoCards from "@/components/DisplayInfoCards";
-import Header from "@/components/Header";
+import Header from "@/components/Header/Header";
+import ImageGrid from "@/components/ImageGrid/ImageGrid";
 import ImageUtilities from "@/components/ImageUtilities/ImageUtilities";
 
 
@@ -19,7 +20,8 @@ export default function Home() {
     <>
       <Header />
       {/* <DisplayInfoCards /> */}
-      <ImageUtilities />
+      {/* <ImageUtilities /> */}
+      <ImageGrid />
     </>
   );
 }

@@ -1,0 +1,26 @@
+@import "../../../styles/core/mixins.scss";
+@import "../../../styles/core/colours.scss";
+
+.small-header {
+    position: absolute;
+    top: 0;
+    width: 100vw;
+    height: 200px;
+    overflow: hidden;
+    @include xxl {
+        height: 300px;
+    }
+
+    .header-image {
+        height: 300px;
+        width: 100%;
+        object-fit: cover;
+        filter: brightness(0.8);
+        @include md {
+            height: 400px;
+        }
+        @include xxl {
+            height: 500px;
+        }
+    }
+}

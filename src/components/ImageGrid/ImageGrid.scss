@@ -1,0 +1,33 @@
+.image-grid {
+    display: grid;
+    margin-top: 40px;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+    grid-gap: 15px;
+    position: relative;
+    
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        vertical-align: middle;
+        max-height: 600px;
+        border-radius: 15px;
+        &:nth-child(3n) {
+            grid-column: 1 / 3;
+        }
+    }
+    .show-all-btn {
+        position: absolute;
+        bottom: 15px;
+        right: 25px;
+        color: white;
+        background-color: black;
+        border-radius: 15px;
+        text-align: center;
+        width: 140px;
+        border: 1px solid white;
+        padding: 5px 20px;
+    }
+}

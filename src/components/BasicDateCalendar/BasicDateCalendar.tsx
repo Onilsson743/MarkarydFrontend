@@ -1,7 +1,7 @@
 'use client'
 
 
-import React, { useState } from 'react';
+import React, { Dispatch, SetStateAction, useState } from 'react';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DateCalendar } from '@mui/x-date-pickers/DateCalendar';
@@ -99,8 +99,12 @@ function Day(
 }
 
 
+interface props {
+    setStartDate?: Dispatch<SetStateAction<Date>>
+    setEndDate?: Dispatch<SetStateAction<Date | undefined>>
+}
 
-export default function BasicDateCalendar() {
+export default function BasicDateCalendar({setStartDate, setEndDate} : props) {
     const [hoveredDay, setHoveredDay] = React.useState<Dayjs | null>(null);
     const [firstDay, setFirstDay] = useState<Dayjs | null>();
     const [lastDay, setLastDay] = useState<Dayjs | null>();
@@ -110,18 +114,28 @@ export default function BasicDateCalendar() {
         if (value.toDate() > (new Date()))  {
             if (!firstDay) {
                 setFirstDay(value)
+                setStartDate && setStartDate(value.toDate())
             } else {
-                if (!lastDay) {
-                    setLastDay(value)
+                if (value.toDate() < firstDay.toDate()) {
+                    setFirstDay(value)
+                    setStartDate && setStartDate(value.toDate())
                 } else {
-                    if (!chosenDate ) {
-                        setFirstDay(value)
-                        setChosenDate(!chosenDate)
-                    } else {
+                    if (value.toDate() < firstDay.toDate()) {
                         setLastDay(value)
-                        setChosenDate(!chosenDate)
+                        setEndDate && setEndDate(value.toDate())
+                    } else {
+                        if (!chosenDate ) {
+                            setFirstDay(value)
+                            setStartDate && setStartDate(value.toDate())
+                            setChosenDate(!chosenDate)
+                        } else {
+                            setLastDay(value)
+                            setEndDate && setEndDate(value.toDate())
+                            setChosenDate(!chosenDate)
+                        }
                     }
                 }
+                
             }
         }        
     }

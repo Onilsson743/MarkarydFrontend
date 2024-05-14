@@ -1,12 +1,13 @@
 
 import React, { useEffect, useState } from 'react';
-import '../styles/components/Header.scss';
+import './Header.scss';
 
-import BasicDateCalendar from '../components/Calendar';
-import DateRangePicker from './DateRangePicker/DateRangePicker';
+import BasicDateCalendar from '../BasicDateCalendar/BasicDateCalendar';
+import DateRangePicker from '../DateRangePicker/DateRangePicker';
+import GoogleTranslateButton from '../GoogleTranslateButton/GoogleTranslateButton';
 
 const Header = () => {
-    const utilities : string[] = [
+    const utilities: string[] = [
         "Utsikt mot trädgården",
         "Gratis parkering inkluderad",
         "Privat bastu",
@@ -18,9 +19,6 @@ const Header = () => {
         "Central luftkonditionering",
     ]
 
-    // var today = new Date();
-    // var tomorrow = new Date(new Date);
-    // tomorrow.setDate(today.getDate() + 1);
     return (
         <div className='header'>
             <img className='header-image' src="https://a0.muscache.com/im/pictures/miso/Hosting-686760093059295825/original/f16b8db3-c5b2-4e51-b1c9-fd25636a4309.jpeg?im_w=1920" alt="" />
@@ -28,15 +26,18 @@ const Header = () => {
             <div className='calendar-div container'>
                 <div className='utilities'>
                     <h2>Bekvämligheter</h2>
+
+                    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
                     <ul>
                         {
                             utilities.map((x, index) => <li key={index}>{x}</li>)
                         }
                     </ul>
                 </div>
-                <DateRangePicker />
-                {/* <BasicDateCalendar /> */}
+                {/* <DateRangePicker /> */}
+                <BasicDateCalendar />
             </div>
+
 
         </div>
     )
