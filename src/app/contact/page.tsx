@@ -1,8 +1,11 @@
+import SmallHeader from '@/components/Header/SmallHeader/SmallHeader'
 import React from 'react'
 
 const contact = () => {
   return (
-    <div>contact</div>
+    <div>
+      <SmallHeader />
+    </div>
   )
 }
 
