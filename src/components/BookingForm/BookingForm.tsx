@@ -25,9 +25,10 @@ const BookingForm = () => {
                 name : formData.name,
                 email: formData.email,
                 message: formData.message,
-                beginDate: startDate.getFullYear() + "-" + startDate.getMonth() + "-" + startDate.getDate(),
-                endDate: endDate.getFullYear() + "-" + endDate.getMonth() + "-" + endDate.getDate(),                
+                beginDate: startDate.toLocaleDateString(),
+                endDate: endDate.toLocaleDateString(),                
             }
+            console.log(bookingRequest)
             var response : Response = await SendBookingRequest(bookingRequest);
             if (response.ok) {
                 var data = await response.json()
@@ -38,7 +39,7 @@ const BookingForm = () => {
       }
     return (
         <div className='booking-form container'>
-            <div>
+            <div className='calendar-section'>
                 <BasicDateCalendar setStartDate={setStartDate} setEndDate={setEndDate}/>
                 <h6>Från: <strong>{startDate && startDate.getDate().toString() + "e " + GetMonthName(startDate.getMonth()) + " " + startDate.getFullYear()}</strong></h6>
                 <h6>Till: <strong>{endDate && endDate.getDate().toString() + "e " + GetMonthName(startDate.getMonth()) + " " + startDate.getFullYear()}</strong></h6>
@@ -53,7 +54,7 @@ const BookingForm = () => {
                 <label htmlFor="message">Meddelande</label>
                 <textarea name="message" id="message" value={formData.message} onChange={(e) => handleChange(e)}></textarea>
 
-                <button>Skicka Bokningsförfrågan</button>
+                <button className='button-theme'>Skicka Bokningsförfrågan</button>
             </form>
         </div>
     )

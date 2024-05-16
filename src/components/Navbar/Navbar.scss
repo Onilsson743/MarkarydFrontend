@@ -15,9 +15,13 @@
     z-index: 10;
     padding-top: 10px;
     padding-bottom: 20px;
-    margin-bottom: 200px;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    display: block;
+    // margin-bottom: 200px;
     @include xxl {
-        margin-bottom: 300px;
+        // margin-bottom: 300px;
     }
 
     .navigationbar {

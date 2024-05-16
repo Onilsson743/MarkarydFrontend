@@ -11,7 +11,8 @@
     width: 100%;
     background-color: #f2f2f2;
     min-height: 100vh;
-    display: flex;
+    position: relative;
+    /* display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-between; */
 }

@@ -4,6 +4,8 @@ import "./globals.css";
 import Navbar from "@/components/Navbar/Navbar";
 import Head from "next/head";
 import Footer from "@/components/Footer/Footer";
+import { Suspense } from "react";
+import { LoadingSpinner } from "@/components/LoadingSpinner/LoadingSpinner";
 
 
 const inter = Inter({ subsets: ["latin"] });
@@ -28,9 +30,11 @@ export default function RootLayout({
         <script defer type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
       </head>
       <body className="main">
-        <Navbar />
-        {children}
-        <Footer />
+        <Suspense fallback={<LoadingSpinner />}>
+          <Navbar />
+          {children}
+          <Footer />
+        </Suspense>        
       </body>      
     </html>
   );

@@ -5,13 +5,13 @@
 .header {
     position: relative;
     height: auto;
-    margin-top: -280px;
+    // margin-top: -280px;
 
     @include lg {
         height: 700px;
     }
     @include xxl {
-        margin-top: -380px;
+        // margin-top: -380px;
     }
     .header-image {
         height: 400px;

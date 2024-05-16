@@ -1,26 +1,46 @@
 @import "../../styles/core/mixins.scss";
 @import "../../styles/core/colours.scss";
+@import "../../styles/core/buttons.scss";
 
 .booking-form {
-    // background-color: white;
     display: flex;
     flex-direction: column;
     gap: 20px;
     justify-content: space-around;
-    // padding-top: 30px;
     padding-bottom: 20px;
     min-height: 500px;
+    margin-top: 50px;
 
-    .MuiDateCalendar-root {
-        border: 1px solid rgba(0, 0, 0, 0.096);
-        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.377);
-        border-radius: 15px;
-        margin-bottom: 30px;
-        background-color: white;
+    @include lg {
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 50px;
     }
+
+    .calendar-section {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+
+        .MuiDateCalendar-root {
+            border: 1px solid rgba(0, 0, 0, 0.096);
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.377);
+            border-radius: 15px;
+            margin-bottom: 30px;
+            background-color: white;
+ 
+            @include lg {
+                margin-left: 0;
+            }
+        }
+    }
+    
     form {
         display: flex;
         flex-direction: column;
+        @include lg {
+            flex: 1;
+        }
 
         input, textarea {
             border: 1px solid rgba(0, 0, 0, 0.295);

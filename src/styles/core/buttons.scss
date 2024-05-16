@@ -1,0 +1,57 @@
+.button-theme {
+    color: #faf0dc;
+    background-color: rgba(5, 3, 14, 0.774);
+    border-radius: 15px;
+    text-align: center;
+    border: 1px solid black;
+    padding: 8px 25px;
+    letter-spacing: 2px;
+    width: auto;
+    align-self: center;
+    transition: 0.2s ease-in-out;
+    &:hover {
+        background-color: rgba(5, 3, 14, 0.932);
+        scale: 1.05;
+    }
+}
+
+
+.admin-btn{  
+    border-radius: 4px;
+    height: 44px;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    -webkit-transition : 0.2 ease-in-out;
+    transition: 0.2 ease-in-out;
+    padding: 0 30px;
+    letter-spacing: 1px;
+    display: -webkit-inline-flex;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -webkit-align-items: center;
+    -moz-align-items: center;
+    -ms-align-items: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    -moz-justify-content: center;
+    -ms-justify-content: center;
+    justify-content: center;
+    -ms-flex-pack: center;
+    text-align: center;
+    border: none;
+    background-color: #ffeba7;
+    color: #102770;
+    box-shadow: 0 8px 24px 0 rgba(255,235,167,.2);
+    &:active,
+    &:focus{  
+      background-color: #102770;
+      color: #ffeba7;
+      box-shadow: 0 8px 24px 0 rgba(16,39,112,.2);
+    }
+    &:hover{  
+      background-color: #102770;
+      color: #ffeba7;
+      box-shadow: 0 8px 24px 0 rgba(16,39,112,.2);
+    }
+  }

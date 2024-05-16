@@ -1,0 +1,156 @@
+
+
+
+// Config ----------------------------------
+
+$spinner-size: 300px;                 // 200px
+$spinner-thickness: 10px;              // 4px
+$spinner-speed: 2.2s;                 // 1.2s
+
+$spinner-3d: true;                    // true
+$spinner-loops: infinite;             // infinite (be careful, save the batteries!)
+
+
+// Spinner ----------------------------------
+
+.spinner-body {
+    //spinner one
+    // display: flex;
+    // padding: 50px;
+    // box-sizing: border-box;
+    // background: radial-gradient( hsl(200,40%,20%), hsl(200,30%,6%) );
+    // min-height: 100vh;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient( hsl(200,40%,20%), hsl(200,30%,6%) );
+
+
+    .spinner {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 300px;
+        height: 300px;
+    }
+    
+    .spinner-sector {
+        border-radius: 50%;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border: 15px solid transparent;
+        mix-blend-mode: overlay;
+    }
+    
+    .spinner-text {
+        animation: loading-opacity 3s ease-in-out infinite;
+        font-size: 2em;
+    }
+    
+    .spinner-sector-blue {
+        animation: rotate 2s ease-out infinite;
+        border-top: 15px solid lightblue;
+    }
+    
+    .spinner-sector-red {
+        animation: rotate 2.5s ease-in infinite;
+        border-top: 15px solid lightcoral;
+    }
+    
+    .spinner-sector-green {
+        animation: rotate 1.5s ease-in-out infinite;
+        border-top: 15px solid lightgreen;
+    }
+    
+    @keyframes rotate {
+        from { transform: rotate(0); }
+        to { transform: rotate(360deg); }
+    }
+    
+    @keyframes loading-opacity {
+        0%, 100% {
+            opacity: 1;
+        }
+        25%, 75% {
+            opacity: .5;
+        }
+        50% {
+            opacity: .1;
+        }
+    }
+
+
+
+    //Spinner new
+    // .spinner {
+    //     position: relative;
+    //     margin: auto;
+    //     box-sizing: border-box;
+    //     background-clip: padding-box;
+    //     width: $spinner-size;
+    //     height: $spinner-size;
+    //     border-radius: $spinner-size / 2;
+    //     border: $spinner-thickness solid hsla(0,0%,100%,.1);
+    //     @if ($spinner-3d) {
+    //       // mask smoothens out the anti-aliasing artifacts in the back. 
+    //       -webkit-mask: linear-gradient(hsla(0,0%,0%,.1), hsla(0,0%,0%,1)  90% );
+    //       transform-origin: 50% 60%;
+    //       transform: perspective($spinner-size) rotateX(66deg);
+    //       animation: spinner-wiggle $spinner-speed $spinner-loops;
+    //     }
+        
+    //   }
+      
+    //   @keyframes spinner-wiggle {
+    //     30% { transform: perspective($spinner-size) rotateX(66deg); }
+    //     40% { transform: perspective($spinner-size) rotateX(65deg); }
+    //     50% { transform: perspective($spinner-size) rotateX(68deg); }
+    //     60% { transform: perspective($spinner-size) rotateX(64deg); }
+    //   }
+      
+      
+    //   .spinner:before,
+    //   .spinner:after {
+    //     content: "";
+    //     position: absolute;
+    //     margin: -$spinner-thickness;
+    //     box-sizing: inherit;
+    //     width: inherit;
+    //     height: inherit;
+    //     border-radius: inherit;
+    //     opacity: .05;
+    //     border: inherit;
+    //     border-color: transparent;
+    //     animation: spinner-spin $spinner-speed cubic-bezier(.6,.2,0,.8) $spinner-loops,
+    //                spinner-fade $spinner-speed linear $spinner-loops;
+        
+    //   }
+      
+    //   .spinner:before {
+    //     border-top-color: hsl(120, 100%, 35%);
+    //   }
+      
+    //   .spinner:after {
+    //     border-top-color: hsl(64, 73%, 50%);
+    //     animation-delay: $spinner-speed * 0.25;
+    //   }
+      
+    //   @keyframes spinner-spin {
+    //     100% { transform: rotate(360deg); }
+    //   }
+      
+    //   @keyframes spinner-fade {
+    //     20% { opacity: .1; }
+    //     40% { opacity: 1; }
+    //     60% { opacity: .1; }
+    //   }
+      
+
+}
+
+// Page ----------------------------------
+

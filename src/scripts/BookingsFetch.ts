@@ -31,4 +31,16 @@ export const SendBookingRequest = async (bookingRequest : IBookingRequest) => {
         return error;
     });
 }
+export const ApproveBooking = async (id : string) => {
+    return await fetch(`${api}/Booking/ApproveBooking?id=${id}`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    }).then(response => {
+        return response;
+    }).catch(error => {
+        return error;
+    });
+}
 

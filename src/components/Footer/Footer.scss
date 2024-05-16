@@ -1,11 +1,17 @@
 @import "../../styles/core/colours.scss";
 
+.footer-margin {
+    height: 200px;
+    width: 100%;
+}
 footer {
     height: 200px;
     background-color: $darkgrey;
     color: $beige;
     width: 100%;
-    margin-top: 50px;
+    // margin-top: 200px;
+    position: absolute;
+    bottom: 0;
     .container {
         display: flex;
         justify-content: space-between;
