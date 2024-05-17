@@ -3,10 +3,12 @@
 import React, { useState } from 'react'
 import './AdminKey.scss'
 import { useRouter } from 'next/navigation';
+import { GenerateNewKey, ValidateKey } from '@/scripts/AuthFetch';
 
 
 const AdminKey = () => {
     const [formData, setFormData] = useState({ authkey: "", });
+    const [responseMessage, setResponseMessage] = useState<string>();
     const router = useRouter();
 
     const handleChange = (event: any) => {
@@ -14,15 +16,25 @@ const AdminKey = () => {
         setFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
     };
 
-    const createAuthKey = () => {
-        //Check if key is ok and then set it and refresh the page.
-        document.cookie = process.env.NEXT_PUBLIC_AUTH_COOKIE_NAME! + "=" + formData.authkey
-        
-        router.refresh()
+    const createAuthKey = async () => {
+        var response = await ValidateKey(formData.authkey);
+        if (response.ok) {
+            var expirationDate = new Date();
+            expirationDate.setMonth(expirationDate.getMonth() + 6);
+            document.cookie = `${process.env.NEXT_PUBLIC_AUTH_COOKIE_NAME!}=${formData.authkey};expires=${expirationDate}`;
+            router.refresh()
+        } else {
+            setResponseMessage("Nyckeln gick ej att validera, vänligen testa igen.")
+        }        
     }
 
-    const sendNewAuthKey = () => {
-        //fetch to send a new authkey.
+    const sendNewAuthKey = async () => {
+        var response : Response = await GenerateNewKey();
+        if(response.ok) {
+            setResponseMessage("En ny nyckel har skickats som ett email.")
+        } else {
+            setResponseMessage("Något gick fel, vänligen kontakta it support.")
+        }
     }
 
 
@@ -54,7 +66,7 @@ const AdminKey = () => {
                                             <div className="center-wrap">
                                                 <div className="section text-center">
                                                     <h4 className="mb-4 pb-3">Skapa ny nyckel</h4>
-                                                    <button className="btn mt-4">Skicka nyckel</button>
+                                                    <button onClick={() => sendNewAuthKey()} className="btn mt-4">Skicka nyckel</button>
                                                 </div>
                                             </div>
                                         </div>
