@@ -73,20 +73,7 @@
             display: flex;
             justify-content: center;
 
-            .save-button {
-                background: rgb(79, 212, 79);
-
-                &:hover {
-                    background-color: #102770;
-                }
-            }
-            .delete-button {
-                background: rgb(248, 93, 93);
-
-                &:hover {
-                    background-color: #102770;
-                }
-            }
+            
         }
     }
     .admin-btn {

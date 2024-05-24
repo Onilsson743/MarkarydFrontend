@@ -26,7 +26,7 @@ const page = async () => {
     return (
         <div className='admin-page'>
             <h1>Unauthorized</h1>
-            <Link href="/admin" >Logga in</Link>
+            <Link className='admin-btn' href="/admin" >Logga in</Link>
         </div>
     )
 }

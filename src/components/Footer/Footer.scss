@@ -1,7 +1,7 @@
 @import "../../styles/core/colours.scss";
 
 .footer-margin {
-    height: 200px;
+    height: 220px;
     width: 100%;
 }
 footer {
@@ -9,7 +9,6 @@ footer {
     background-color: $darkgrey;
     color: $beige;
     width: 100%;
-    // margin-top: 200px;
     position: absolute;
     bottom: 0;
     .container {

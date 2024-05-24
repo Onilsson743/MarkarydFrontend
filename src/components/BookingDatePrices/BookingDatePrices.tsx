@@ -82,7 +82,7 @@ const BookingDatePrices = () => {
 
     return (
         <div className='booking-date-prices container'>
-            <h2 onClick={() => console.log(datePrices)}>Grundpris</h2>
+            <h2>Grundpris</h2>
             <div className='price-section'>
                 <div className='info-box'>
                     {toggleDefaultPrice ? (

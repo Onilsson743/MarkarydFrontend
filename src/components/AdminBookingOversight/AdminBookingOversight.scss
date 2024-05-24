@@ -1,0 +1,25 @@
+.admin-booking-oversight {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    text-align: center;
+    width: 100%;
+
+    h2 {
+        margin-top: 20px;
+    }
+
+    .booking {
+        width: 90%;
+        padding: 10px 20px;
+        border: 1px solid white;
+        border-radius: 15px;
+        background-color: #302E3F;
+        
+
+        .text {
+            text-align: start;
+        }
+    }
+}

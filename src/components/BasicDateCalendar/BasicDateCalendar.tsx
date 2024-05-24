@@ -11,6 +11,8 @@ import { styled } from '@mui/material/styles';
 import { PickersDay, PickersDayProps } from '@mui/x-date-pickers/PickersDay';
 import { GetAllBookings } from '@/scripts/BookingsFetch';
 import { IBooking } from '@/models/IBooking';
+import { IsDateBooked } from '@/functions/ValidateBookings';
+import book from '@/app/book/page';
 
 dayjs.extend(isBetweenPlugin);
 
@@ -25,14 +27,14 @@ interface CustomPickerDayProps extends PickersDayProps<Dayjs> {
     isSelected: boolean;
     isHovered: boolean;
     isbetween?: boolean;
-    isbefore: boolean;
+    isbefore: boolean ;
     isFirst?: boolean;
     isLast?: boolean;
 }
 
 const CustomPickersDay = styled(PickersDay, {
     shouldForwardProp: (prop) => prop !== 'isSelected' && prop !== 'isHovered',
-})<CustomPickerDayProps>(({ theme, isSelected, isHovered, isbetween, isbefore, isFirst, isLast}) => ({
+})<CustomPickerDayProps>(({ theme, isSelected, isHovered, isbetween, isbefore}) => ({
     borderRadius: "50%",
     fontSize: "14px",
     border: "1px solid transparent",
@@ -55,10 +57,7 @@ const CustomPickersDay = styled(PickersDay, {
     }),
     ...(isbefore && {
         color: "rgba(196, 196, 196, 1)"
-    }),
-    ...(isFirst && {
-
-    }),
+    })
 
 })) as React.ComponentType<CustomPickerDayProps>;
 
@@ -69,15 +68,20 @@ function Day(
         firstDay?: Date | null;
         lastDay?: Date | null;
         booked?: Date[] | null;
+        bookings?: IBooking[];
     },
 ) {
-    const { day, selectedDay, firstDay, lastDay, hoveredDay, booked, ...other } = props;
-
-    const selected = (day.date() == dayjs(firstDay).date() && day.month() == dayjs(firstDay).month() || day.date() == dayjs(lastDay).date() && day.month() == dayjs(lastDay).month())
-    const datesBetween = (day.toDate() > dayjs(firstDay!).toDate() && day.toDate() < dayjs(lastDay).toDate())
+    const { day, selectedDay, firstDay, lastDay, hoveredDay, booked, bookings, ...other } = props;
     let isBooked = false;
     let hover = false;
-    let prevday = false;
+    let prevday : boolean = false;
+
+    const selected : boolean = (day.date() == dayjs(firstDay).date() && day.month() == dayjs(firstDay).month() || day.date() == dayjs(lastDay).date() && day.month() == dayjs(lastDay).month())
+    const datesBetween : boolean = (day.toDate() > dayjs(firstDay!).toDate() && day.toDate() < dayjs(lastDay).toDate())
+    
+    if(bookings) {
+        isBooked = IsDateBooked(bookings, day.toDate())
+    }
 
     if (hoveredDay) {
         hover = areDatesEqual(day.toDate(), hoveredDay!.toDate())
@@ -87,14 +91,6 @@ function Day(
         prevday = true
     }
 
-    if (booked){
-        // isBooked = booked.includes(day.toDate())
-        for(let i = 0; i < booked?.length; i++){
-            if (day.date() == dayjs(booked[i]).date() && day.month() == dayjs(booked[i]).month()){
-                isBooked = true;
-            }
-        }
-    }   
     return (
         <CustomPickersDay
             {...other}
@@ -121,30 +117,39 @@ export default function BasicDateCalendar({setStartDate, setEndDate} : props) {
     const [hoveredDay, setHoveredDay] = React.useState<Dayjs | null>(null);
     const [firstDay, setFirstDay] = useState<Dayjs | null>();
     const [lastDay, setLastDay] = useState<Dayjs | null>();
-    const [bookings, setBookings] = useState<Date[]>([]);
+    const [existingBookings, setExistingBookings] = useState<IBooking[]>();
+    
 
     const fetchBookings = async () => {
-        var response : Response = await GetAllBookings();
-        if (response.ok) {
-            var data : IBooking[] = await response.json();
-            var dates : Date[] = []
-            data.map(booking => {
-                const setDate = new Date(booking.beginDate)
-                const endDate = new Date(booking.endDate)
-                
-                while (setDate <= endDate) {
-                    dates.push(new Date(setDate));
-                    setDate.setDate(setDate.getDate() + 1)
+        var response: Response = await GetAllBookings();
+        if(response.ok) {
+            var data = await response.json();
+            setExistingBookings(data)
+        }
+    }
+    
+    const GetNextBookedDate = () => {
+        if(firstDay && existingBookings && existingBookings.length > 0) {
+            var futureBookings : Date[]= []
+            existingBookings.map(booking => {
+                const beginDate = new Date(booking.beginDate)
+                if(beginDate > firstDay.toDate()) {
+                    futureBookings.push(beginDate)
                 }
             })
-            setBookings(dates);
-        }      
+            return new Date(Math.min(...futureBookings.map(x => x.getTime())))
+        }
     }
-
-    const GetNextBookedDate = () => {
-        if(firstDay) {
-            const afterBookings = bookings.filter(date => date > firstDay.toDate())
-            return new Date(Math.min(...afterBookings.map(x => x.getTime())))
+    const GetPrevBookedDate = () => {
+        if(firstDay && existingBookings && existingBookings.length > 0) {
+            var prevBookings : Date[]= []
+            existingBookings.map(booking => {
+                const beginDate = new Date(booking.beginDate)
+                if(beginDate < firstDay.toDate()) {
+                    prevBookings.push(beginDate)
+                }
+            })
+            return new Date(Math.max(...prevBookings.map(x => x.getTime())))
         }
     }
 
@@ -165,7 +170,7 @@ export default function BasicDateCalendar({setStartDate, setEndDate} : props) {
                     setStartDate && setStartDate(value.toDate())
                 } else {
                     if (!lastDay) {
-                        if(bookings) {
+                        if(existingBookings) {
                             const nextBooking = GetNextBookedDate()
                             if (nextBooking && value.toDate() > nextBooking) {
                                 
@@ -177,10 +182,13 @@ export default function BasicDateCalendar({setStartDate, setEndDate} : props) {
                     }
                     else {                        
                         if (value.toDate() > lastDay.toDate()) {
-                            if(bookings) {
+                            if(existingBookings) {
                                 const nextBooking = GetNextBookedDate()
                                 if (nextBooking && value.toDate() > nextBooking) {
-                                    
+                                    setFirstDay(value)
+                                    setStartDate && setStartDate(value.toDate())
+                                    setLastDay(null)
+                                    setEndDate && setEndDate(undefined)                                    
                                 } else {
                                     setLastDay(value)
                                     setEndDate && setEndDate(value.toDate())
@@ -215,7 +223,7 @@ export default function BasicDateCalendar({setStartDate, setEndDate} : props) {
                             hoveredDay,
                             firstDay: firstDay,
                             lastDay: lastDay,
-                            booked: bookings,
+                            bookings: existingBookings,
                             onPointerEnter: () => setHoveredDay(ownerState.day),
                             onPointerLeave: () => setHoveredDay(null),
                         }) as any,

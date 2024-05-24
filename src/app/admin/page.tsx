@@ -18,7 +18,7 @@ const page = async () => {
           <h1>Admin panelen</h1>
           <div className='options'>
             <Link href="/admin/prices" className='admin-btn'>Hantera Priser</Link>
-            <Link href="/admin/" className='admin-btn'>Hantera Bokningar</Link>
+            <Link href="/admin/bookings" className='admin-btn'>Hantera Bokningar</Link>
           </div>
         </div>
       )

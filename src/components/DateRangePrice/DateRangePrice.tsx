@@ -5,6 +5,7 @@ import { IDateRangePrice, IDateRangePriceFetch } from '@/models/IDateRangePrices
 import React, { useState } from 'react';
 import './DateRangePrice.scss';
 import { RemoveDateRangePrice } from '@/scripts/BookingPricesFetch';
+import { DeleteButton } from '../DeleteButton/DeleteButton';
 
 const DateRangePrice = ({ datePrice }: { datePrice: IDateRangePrice}) => {
     const [dateRangePrice, setDateRangePrice] = useState<IDateRangePrice | undefined>(datePrice);
@@ -53,7 +54,8 @@ const DateRangePrice = ({ datePrice }: { datePrice: IDateRangePrice}) => {
     
                             </form>
                             <div className='buttons'>
-                                <button className='admin-btn delete-button' onClick={() => Delete()}>Radera</button>
+                                <DeleteButton remove={() => Delete()} />
+                                {/* <button className='admin-btn delete-button' onClick={() => Delete()}>Radera</button> */}
                                 <button className='admin-btn save-button' onClick={() => Update()}>Spara</button>
                                 <button className='admin-btn' onClick={() => setToggle(false)}>Avbryt</button>
                             </div>
