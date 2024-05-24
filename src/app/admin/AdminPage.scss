@@ -1,13 +1,14 @@
 .admin-page {
     background-color: #1f2029;
-    min-height: 80vh;
-    padding-top: 100px;
+    min-height: 100vh;
+    padding-top: 50px;
+    padding-bottom: 50px;
     color: white;
     display: flex;
     flex-direction: column;
     align-items: center;
     // justify-content: center;
-    gap: 50px;
+    gap: 30px;
 
 
     .options {

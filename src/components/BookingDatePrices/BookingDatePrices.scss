@@ -1,0 +1,97 @@
+@import "../../styles/core/mixins.scss";
+@import "../../styles/core/colours.scss";
+@import "../../styles/core/buttons.scss";
+
+.booking-date-prices {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+
+    .price-section {
+        display: flex;
+        flex-direction: column;
+        // justify-content: center;
+        // align-items: center;
+
+
+        .info-box {
+            width: 100%;
+            padding: 10px 20px;
+            border: 1px solid white;
+            border-radius: 15px;   
+            background-color: #302E3F; 
+            @include lg {
+                display: flex;
+                justify-content: space-between;
+                
+                padding: 10px 50px;
+            }   
+
+            .form-box {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+                
+                @include lg {
+                    
+                }
+            }
+            .text {
+                display: flex;
+                justify-content: center;
+                
+                @include lg {
+                    width: 50%;
+                    flex-wrap: wrap;
+                    justify-content: start;
+                }
+                
+
+                p {
+                    font-size: 20px;
+                }
+                form {
+                    display: flex;
+                }
+            }
+            
+            input {
+                border: 1px solid rgba(0, 0, 0, 0.295);
+                box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.377);
+                border-radius: 15px;
+                padding: 10px 10px;
+                margin-bottom: 20px;
+                
+    
+            }
+            label {
+                font-size: 20px;
+                margin-left: 5px;
+            }
+            .save-button {
+                background: rgb(79, 212, 79);
+
+                &:hover {
+                    background-color: #102770;
+                }
+            }
+            .buttons {
+                display: flex;
+                gap: 20px;
+            }
+        }
+        .add-new-form {
+            display: flex;
+            flex-direction: column;
+        }
+        .admin-btn {
+            height: auto;
+            padding: 7px 30px;
+            font-size: 15px;
+            max-height: 40px;
+        }
+    }
+}

@@ -2,8 +2,6 @@
 @import "../../styles/core/colours.scss";
 @import "../../styles/core/buttons.scss";
 
-/* Please ❤ this if you like it! */
-
 
 @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700,800,900');
 
@@ -15,8 +13,14 @@
 	color: #c4c3ca;
 	background-color: #1f2029;
 	overflow-x: hidden;
-  padding-top: 50px;
+  min-height: 100vh;
 
+  .header-text {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 3rem;
+    padding: 10px;
+  }
     a {
         cursor: pointer;
       transition: all 200ms linear;
@@ -47,9 +51,10 @@
       position: relative;
       width: 100%;
       display: block;
+      padding-top: 30px;
     }
     .full-height {
-        min-height: 80vh;
+        // min-height: 80vh;
     }
     [type="checkbox"]:checked,
     [type="checkbox"]:not(:checked){

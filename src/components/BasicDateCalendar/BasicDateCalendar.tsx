@@ -167,7 +167,6 @@ export default function BasicDateCalendar({setStartDate, setEndDate} : props) {
                     if (!lastDay) {
                         if(bookings) {
                             const nextBooking = GetNextBookedDate()
-                            console.log(nextBooking)
                             if (nextBooking && value.toDate() > nextBooking) {
                                 
                             } else {
@@ -180,7 +179,6 @@ export default function BasicDateCalendar({setStartDate, setEndDate} : props) {
                         if (value.toDate() > lastDay.toDate()) {
                             if(bookings) {
                                 const nextBooking = GetNextBookedDate()
-                                console.log(nextBooking)
                                 if (nextBooking && value.toDate() > nextBooking) {
                                     
                                 } else {
@@ -204,16 +202,6 @@ export default function BasicDateCalendar({setStartDate, setEndDate} : props) {
             }
         }        
     }
-
-    // const setDisabledDates = (date : Date) => {
-    //     const result = bookings.find(item => item.getDate() == date.getDate() && item.getMonth() == date.getMonth())
-    //     if (result) {
-    //         return true;
-    //     } else {
-    //         return true;
-    //         return false;
-    //     }
-    // }
 
     return (
         <LocalizationProvider dateAdapter={AdapterDayjs}>
